@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sowjanya Surada | Portfolio and resume</title>
+<meta name="description" content="Sowjanya Surada: B.Tech CSE graduate (2026). Java Full Stack and AI / Computer Vision profile, projects and resume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F6FA;
+    --surface: #FFFFFF;
+    --ink: #141B2D;
+    --muted: #566075;
+    --line: #D9DEE8;
+    --fs: #1F5FD1;
+    --ml: #C2306B;
+    --accent: var(--fs);
+    --on-accent: #FFFFFF;
+    --display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1420; --surface: #171E2E; --ink: #E8ECF5; --muted: #9AA5BC; --line: #2A3347;
+      --fs: #86AEFF; --ml: #FF93BC; --on-accent: #0F1420;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1420; --surface: #171E2E; --ink: #E8ECF5; --muted: #9AA5BC; --line: #2A3347;
+    --fs: #86AEFF; --ml: #FF93BC; --on-accent: #0F1420;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: 5rem; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 1rem; line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  body[data-mode="ml"] { --accent: var(--ml); }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  [hidden] { display: none !important; }
+
+  .skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--on-accent); padding: 0.6rem 1rem; z-index: 50; }
+  .skip:focus { left: 0.5rem; top: 0.5rem; }
+
+  .icon { display: inline-flex; flex: none; }
+
+  /* Shell */
+  .app { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-columns: 17rem minmax(0, 1fr); }
+  .side {
+    position: sticky; top: 0; height: 100vh; height: 100dvh; overflow-y: auto;
+    background: var(--surface); border-right: 1px solid var(--line);
+    padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .content { min-width: 0; }
+  .topbar, .tabbar { display: none; }
+  main { max-width: 66rem; padding: 2.75rem 2.5rem 4rem; outline: none; }
+
+  .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .badge {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+    background: var(--accent); color: var(--on-accent);
+    font-family: var(--display); font-weight: 800; letter-spacing: -0.02em;
+  }
+  .brand-name { font-family: var(--display); font-weight: 800; font-size: 1.1rem; line-height: 1.15; letter-spacing: -0.02em; display: block; }
+  .brand-sub { color: var(--muted); font-size: 0.85rem; display: block; }
+
+  .lens { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+  .lens-btn {
+    appearance: none; border: 0; background: none; cursor: pointer;
+    padding: 0.5rem 0.4rem; border-radius: 7px; font-weight: 600; font-size: 0.85rem; line-height: 1.25; color: var(--muted);
+  }
+  .lens-btn:hover { color: var(--ink); }
+  .lens-btn[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+
+  .nav { display: flex; flex-direction: column; gap: 2px; }
+  .nav-link {
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem;
+    border-radius: 8px; text-decoration: none; color: var(--muted); font-weight: 500;
+  }
+  .nav-link:hover { background: var(--bg); color: var(--ink); }
+  .nav-link[aria-current="page"] { background: var(--bg); color: var(--ink); box-shadow: inset 3px 0 0 var(--accent); font-weight: 600; }
+
+  .side-foot { margin-top: auto; display: grid; gap: 0.5rem; }
+  .tool {
+    appearance: none; cursor: pointer; display: flex; align-items: center; gap: 0.6rem;
+    width: 100%; padding: 0.55rem 0.75rem; border: 1px solid var(--line); background: var(--bg);
+    border-radius: 8px; color: var(--muted); font-size: 0.9rem; text-align: left;
+  }
+  .tool:hover { color: var(--ink); }
+  .tool kbd { margin-left: auto; font: 500 0.75rem var(--body); border: 1px solid var(--line); border-radius: 5px; padding: 0.05rem 0.4rem; background: var(--surface); }
+
+  /* Mobile shell */
+  @media (max-width: 55.99rem) {
+    .app { grid-template-columns: minmax(0, 1fr); }
+    .side { display: none; }
+    .topbar {
+      display: grid; gap: 0.6rem; position: sticky; top: 0; z-index: 20;
+      background: var(--bg); border-bottom: 1px solid var(--line);
+      padding: calc(0.6rem + env(safe-area-inset-top, 0px)) 1rem 0.6rem;
+    }
+    .topbar-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+    .topbar .badge { width: 2.1rem; height: 2.1rem; font-size: 0.85rem; }
+    .iconbtn { appearance: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; width: 2.4rem; height: 2.4rem; display: grid; place-items: center; color: var(--muted); }
+    .topbar-tools { display: flex; gap: 0.5rem; }
+    .tabbar {
+      display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+      background: var(--surface); border-top: 1px solid var(--line);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .tab-link {
+      display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+      padding: 0.5rem 0.1rem 0.45rem; text-decoration: none; color: var(--muted);
+      font-size: 0.66rem; font-weight: 500; line-height: 1.2;
+    }
+    .tab-link[aria-current="page"] { color: var(--accent); font-weight: 600; }
+    main { padding: 1.5rem 1.1rem calc(6rem + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (min-width: 56rem) { .topbar-only { display: none; } }
+
+  /* Typography in views */
+  .h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5.5vw, 3.2rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0; }
+  .h2 { font-family: var(--display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; margin: 2rem 0 0.6rem; }
+  .lede { color: var(--muted); margin: 0.6rem 0 0; max-width: 60ch; }
+  .pitch { font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 3vw, 1.85rem); line-height: 1.25; letter-spacing: -0.015em; margin: 1.1rem 0 0; max-width: 32ch; }
+  .summary { margin: 1rem 0 0; max-width: 62ch; }
+
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.4rem; margin-top: 1.6rem; }
+  .btn {
+    appearance: none; border: 0; cursor: pointer; display: inline-block; text-decoration: none;
+    background: var(--accent); color: var(--on-accent); font: 600 1rem/1 var(--body);
+    padding: 0.9rem 1.3rem; border-radius: 8px;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.quiet { background: none; color: var(--ink); border: 1px solid var(--line); }
+  .link { font-weight: 500; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--accent); }
+
+  .glance { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); max-width: 46rem; }
+  .glance li { border-bottom: 1px solid var(--line); }
+  .glance a, .glance span.row { display: block; padding: 0.8rem 0.25rem; text-decoration: none; }
+  .glance a:hover { background: var(--surface); }
+  .glance b { font-weight: 600; }
+
+  /* Projects master-detail */
+  .md { display: grid; grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); gap: 2.25rem; align-items: start; margin-top: 1.5rem; }
+  .tools { display: grid; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .search {
+    width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface); color: var(--ink); font: inherit;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    appearance: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface);
+    border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.88rem; color: var(--muted);
+  }
+  .chip:hover { color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+
+  .plist { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .prow {
+    display: block; text-decoration: none; padding: 0.85rem 0.95rem; border-radius: 8px;
+    border: 1px solid transparent; box-shadow: inset 3px 0 0 transparent;
+  }
+  .prow:hover { background: var(--surface); }
+  .prow[aria-current="true"] { background: var(--surface); border-color: var(--line); box-shadow: inset 3px 0 0 var(--accent); }
+  .prow-title { font-family: var(--display); font-weight: 600; font-size: 1.1rem; line-height: 1.25; display: block; }
+  .prow-meta { color: var(--muted); font-size: 0.88rem; display: block; margin-top: 0.1rem; }
+  .empty { color: var(--muted); padding: 1rem 0.25rem; margin: 0; }
+
+  .detail { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.75rem 1.75rem 1.5rem; min-height: 14rem; }
+  .detail-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.1; letter-spacing: -0.025em; margin: 0; }
+  .meta { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.95rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.9rem 0 0; padding: 0; list-style: none; }
+  .tag { border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.7rem; font-size: 0.85rem; color: var(--muted); }
+  .points { margin: 1rem 0 0; padding-left: 1.1rem; max-width: 62ch; }
+  .points li { margin: 0.35rem 0; }
+  .points li::marker { color: var(--accent); }
+  .stack { margin: 1rem 0 0; color: var(--muted); font-size: 0.95rem; }
+  .stack b { color: var(--ink); font-weight: 600; }
+  .detail-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 1rem; }
+  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.95rem; }
+  .pager a { text-decoration: none; color: var(--muted); max-width: 48%; }
+  .pager a:hover { color: var(--ink); }
+  .back { display: none; align-items: center; gap: 0.25rem; margin-bottom: 1rem; color: var(--muted); text-decoration: none; font-weight: 500; }
+  .back:hover { color: var(--ink); }
+
+  @media (max-width: 55.99rem) {
+    .md { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .md[data-detail="true"] .md-list { display: none; }
+    .md[data-detail="false"] .md-detail { display: none; }
+    .back { display: inline-flex; }
+    .detail { padding: 1.25rem 1.1rem; }
+  }
+
+  /* Skills */
+  .skillgroups { display: grid; gap: 1.4rem; margin-top: 1.5rem; }
+  .skillgroup h2 { font-size: 0.95rem; font-weight: 600; margin: 0 0 0.5rem; color: var(--muted); }
+  .skillpanel { position: sticky; bottom: 1rem; margin-top: 1.75rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; min-height: 5rem; }
+  .skillpanel h2 { font-family: var(--display); font-size: 1.15rem; margin: 0; color: var(--ink); }
+  .skillpanel p { margin: 0.35rem 0 0; color: var(--muted); }
+  .skillpanel ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+  @media (max-width: 55.99rem) { .skillpanel { bottom: calc(4.8rem + env(safe-area-inset-bottom, 0px)); } }
+
+  /* Experience */
+  .xps { margin-top: 1.5rem; border-top: 1px solid var(--line); max-width: 46rem; }
+  .xp { border-bottom: 1px solid var(--line); }
+  .xp summary { list-style: none; cursor: pointer; padding: 1rem 0.25rem; display: block; }
+  .xp summary::-webkit-details-marker { display: none; }
+  .xp summary:hover { background: var(--surface); }
+  .xp-role { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.25; display: block; }
+  .xp-meta { color: var(--muted); font-size: 0.92rem; display: block; margin-top: 0.1rem; }
+  .xp-body { margin: 0; padding: 0 0.25rem 1.1rem; max-width: 60ch; }
+
+  .plain { margin: 0.4rem 0 0; padding-left: 1.1rem; max-width: 62ch; }
+  .plain li { margin: 0.3rem 0; }
+  .plain li::marker { color: var(--accent); }
+  .block { margin-top: 1.5rem; }
+  .block .item-title { font-family: var(--display); font-weight: 600; font-size: 1.25rem; margin: 0; }
+
+  /* Resume viewer */
+  .preview { margin-top: 1.5rem; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+  .preview iframe { display: block; width: 100%; height: 80vh; min-height: 32rem; border: 0; }
+  @media (max-width: 55.99rem) { .preview { display: none; } }
+
+  /* Command palette */
+  .pal { position: fixed; inset: 0; z-index: 60; background: rgba(10, 14, 24, 0.55); display: flex; justify-content: center; align-items: flex-start; padding: 12vh 1rem 1rem; }
+  .pal-box { width: min(36rem, 100%); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+  .pal-input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: none; color: var(--ink); font: inherit; font-size: 1.05rem; padding: 1rem 1.1rem; outline: none; }
+  .pal-list { list-style: none; margin: 0; padding: 0.4rem; max-height: 50vh; overflow-y: auto; }
+  .pal-item { display: flex; justify-content: space-between; gap: 1rem; padding: 0.6rem 0.75rem; border-radius: 8px; cursor: pointer; }
+  .pal-item[aria-selected="true"] { background: var(--bg); box-shadow: inset 3px 0 0 var(--accent); }
+  .pal-hint { color: var(--muted); font-size: 0.85rem; flex: none; }
+  .pal-empty { padding: 1rem 0.75rem; color: var(--muted); }
+
+  .enter { animation: enter 200ms ease-out; }
+  @keyframes enter { from { opacity: 0.4; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .enter { animation: none; } }
+</style>
+</head>
+<body data-mode="fullstack">
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="app">
+  <aside class="side" aria-label="Sidebar">
+    <a class="brand" href="#/overview">
+      <span class="badge" aria-hidden="true">SS</span>
+      <span><span class="brand-name">Sowjanya Surada</span><span class="brand-sub">Fresher, B.Tech CSE 2026</span></span>
+    </a>
+    <div id="lens-side"></div>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <div class="side-foot">
+      <button class="tool" id="open-palette-side" type="button"></button>
+      <button class="tool" id="theme-side" type="button"></button>
+    </div>
+  </aside>
+
+  <div class="content">
+    <header class="topbar">
+      <div class="topbar-row">
+        <a class="brand" href="#/overview">
+          <span class="badge" aria-hidden="true">SS</span>
+          <span class="brand-name">Sowjanya Surada</span>
+        </a>
+        <div class="topbar-tools">
+          <button class="iconbtn" id="open-palette-top" type="button" aria-label="Search and commands"></button>
+          <button class="iconbtn" id="theme-top" type="button" aria-label="Switch light and dark theme"></button>
+        </div>
+      </div>
+      <div id="lens-top"></div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+
+  <nav class="tabbar" id="tabbar" aria-label="Sections"></nav>
+</div>
+
+<div class="pal" id="pal" hidden>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-label="Search and commands">
+    <input class="pal-input" id="pal-input" type="text" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" placeholder="Search projects, skills and actions" autocomplete="off" spellcheck="false">
+    <ul class="pal-list" id="pal-list" role="listbox"></ul>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var EMAIL = "sowjanyasuradaspa@gmail.com";
+  var LINKEDIN = "https://linkedin.com/in/sowjanya-surada";
+  var GITHUB = "https://github.com/sowjanya-py";
+
+  var RESUMES = {
+    fullstack: { file: "Sowjanya_Surada_Resume.pdf" },
+    ml: { file: "Sowjanya_Surada_AI_ML_Resume.pdf" }
+  };
+
+  var VIEWS = [
+    { id: "overview", label: "Overview", icon: "home" },
+    { id: "projects", label: "Projects", icon: "folder" },
+    { id: "skills", label: "Skills", icon: "grid" },
+    { id: "experience", label: "Experience", icon: "briefcase" },
+    { id: "education", label: "Education", icon: "cap" },
+    { id: "resume", label: "Resume", icon: "file" }
+  ];
+
+  var MODES = {
+    fullstack: {
+      label: "Java Full Stack",
+      pitch: "Java Full Stack developer in training, with hands-on machine learning and computer vision projects.",
+      summary: "B.Tech Computer Science graduate (2026) with a foundation in programming, data structures and algorithms, databases and software development. I am training in Java Full Stack development (Core Java, Spring Boot, Hibernate, REST APIs, MySQL and React) and bring project experience in computer vision and machine learning, including a self-driving car simulation that drives on its own in a simulator.",
+      projects: ["plant", "selfdrive", "drone", "more"],
+      glance: [
+        { text: "Java Full Stack training at Naresh IT, Hyderabad (Spring Boot, Hibernate, REST, MySQL, React)", go: "skills" },
+        { text: "B.Tech Computer Science, CGPA 8.0 (2022 to 2026)", go: "education" },
+        { text: "Plant disease detection app with a Streamlit interface", go: "projects/plant" },
+        { text: "Three internships: AI and computer vision, DSA, Python development", go: "experience" }
+      ],
+      skills: [
+        { name: "Languages", items: ["Java", "Python", "C", "C++"] },
+        { name: "Core computer science", items: ["Data structures and algorithms", "DBMS", "OOP"] },
+        { name: "In training at Naresh IT (2026)", training: true, items: ["Spring Boot", "Hibernate", "REST APIs", "MySQL", "React"] },
+        { name: "Applied machine learning", items: ["TensorFlow", "Keras", "OpenCV", "YOLOv5", "YOLOv11n", "MediaPipe", "PyTorch", "Scikit-learn", "NumPy", "Pandas"] },
+        { name: "Tools", items: ["Git", "Flask", "SocketIO", "Streamlit", "Tkinter", "Jupyter", "Google Colab"] }
+      ]
+    },
+    ml: {
+      label: "AI and Computer Vision",
+      pitch: "Computer vision and machine learning engineer, fresher, who builds detection and prediction systems end to end.",
+      summary: "B.Tech Computer Science graduate (2026) focused on computer vision and machine learning. I have built real-time detection and prediction systems with CNNs, YOLO and TensorFlow/Keras, led a self-driving car simulation using behavioral cloning, and trained a drone detection model with 85%+ accuracy. I work across the full workflow, from data collection to deployment.",
+      projects: ["selfdrive", "drone", "plant", "more"],
+      glance: [
+        { text: "Drone detection model with 85%+ accuracy, built on YOLOv11n", go: "projects/drone" },
+        { text: "Self-driving car simulation that drives with no human input", go: "projects/selfdrive" },
+        { text: "B.Tech Computer Science, CGPA 8.0 (2022 to 2026)", go: "education" },
+        { text: "Three internships: AI and computer vision, DSA, Python development", go: "experience" }
+      ],
+      skills: [
+        { name: "Languages", items: ["Python", "Java"] },
+        { name: "ML and deep learning", items: ["TensorFlow", "Keras", "YOLOv5", "YOLOv11n", "OpenCV", "MediaPipe", "PyTorch", "Scikit-learn", "CNN", "NumPy", "Pandas"] },
+        { name: "Deployment and tools", items: ["Streamlit", "Flask", "SocketIO", "Tkinter", "Teachable Machine", "Roboflow", "Git", "Jupyter", "Google Colab"] },
+        { name: "Databases", items: ["MySQL", "Oracle SQL"] }
+      ]
+    }
+  };
+
+  var PROJECTS = {
+    selfdrive: {
+      title: "Self-driving car simulation",
+      meta: "B.Tech capstone, team of 4. Dec 2025 to Apr 2026.",
+      tags: ["Deep learning", "Computer vision"],
+      points: [
+        "Behavioral cloning pipeline that maps camera images from the Udacity simulator directly to steering angles.",
+        "NVIDIA-style CNN in TensorFlow/Keras, trained on augmented driving data (cropping, resizing, normalization, flipping).",
+        "Real-time inference with Flask and SocketIO that streams frames to the model and returns steering and throttle commands.",
+        "Result: the car drives straight roads and moderate curves with no human intervention."
+      ],
+      stack: "TensorFlow, Keras, Flask, SocketIO, Udacity simulator",
+      skills: ["TensorFlow", "Keras", "Flask", "SocketIO", "CNN"],
+      links: []
+    },
+    drone: {
+      title: "Drone detection",
+      meta: "Personal project.",
+      tags: ["Computer vision"],
+      points: [
+        "Real-time object detection model for drones, trained on annotated Roboflow datasets.",
+        "85%+ accuracy while staying lightweight enough for real-time use."
+      ],
+      stack: "YOLOv11n, Roboflow",
+      skills: ["YOLOv11n", "Roboflow"],
+      links: [["Code on GitHub", "https://github.com/sowjanya-py/drone-detection"]]
+    },
+    plant: {
+      title: "Plant disease detection app",
+      meta: "Personal project.",
+      tags: ["Computer vision", "Web app"],
+      points: [
+        "YOLOv5 model trained on a Roboflow plant disease dataset.",
+        "Streamlit interface that shows bounding boxes, confidence scores and treatment suggestions."
+      ],
+      stack: "YOLOv5, Roboflow, Streamlit",
+      skills: ["YOLOv5", "Roboflow", "Streamlit"],
+      links: [["Code on GitHub", "https://github.com/sowjanya-py/plant-disease-detection"]]
+      /* To add a live demo link: ["Live demo", "https://your-demo-url"] */
+    },
+    more: {
+      title: "More builds",
+      meta: "Personal projects.",
+      tags: ["Bots and tools"],
+      points: [
+        "AIVA, a Telegram assistant bot for conversational task automation.",
+        "Real-time facial landmark detection with MediaPipe.",
+        "Tkinter utilities and a web-based student report card generator."
+      ],
+      stack: "Python, MediaPipe, Tkinter",
+      skills: ["Python", "MediaPipe", "Tkinter"],
+      links: []
+    }
+  };
+
+  var EXPERIENCE = [
+    { role: "AI and Computer Vision intern", org: "AIMER Society", when: "May to Jul 2025",
+      text: "Developed CNN and YOLO-based models for image classification and detection. Built a sign language detector and several image classifiers." },
+    { role: "DSA intern", org: "CodeBeat", when: "Jun to Aug 2024",
+      text: "Solved data structures and algorithms problems to strengthen core problem-solving." },
+    { role: "Python development intern", org: "Technohacks EduTech", when: "May to Jun 2024",
+      text: "Built Python automation tools and GUI applications with Tkinter." }
+  ];
+
+  var EXTRAS = [
+    "Data Science with Python, Teachnook (in association with IIT Bhubaneswar)",
+    "Java Full Stack Development training: Core Java, Spring Boot, Hibernate, REST APIs, MySQL, React (Naresh IT, Hyderabad, 2026, in progress)",
+    "Tech Fest Lead and hackathon participant"
+  ];
+
+  var ICONS = {
+    home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+    folder: '<path d="M3 6h6l2 2h10v11H3z"/>',
+    grid: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V4h6v3"/>',
+    cap: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+    file: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',
+    search: '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/>',
+    moon: '<path d="M20 14A8 8 0 0110 4a8 8 0 1010 10z"/>',
+    chevron: '<path d="M15 5l-7 7 7 7"/>'
+  };
+
+  var state = { mode: "fullstack", view: "overview", project: null, filter: "All", query: "", skill: null };
+  var desktopQuery = window.matchMedia ? window.matchMedia("(min-width: 56rem)") : { matches: true, addEventListener: function () {} };
+  var isMac = /Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent || "");
+  var SHORTCUT = isMac ? "\u2318K" : "Ctrl K";
+
+  /* ---------- helpers ---------- */
+  function $(id) { return document.getElementById(id); }
+
+  function h(tag, attrs) {
+    var el = document.createElement(tag);
+    var a = attrs || {};
+    for (var k in a) {
+      if (!Object.prototype.hasOwnProperty.call(a, k)) continue;
+      var v = a[k];
+      if (k === "class") el.className = v;
+      else if (k === "text") el.textContent = v;
+      else if (k.indexOf("on") === 0 && typeof v === "function") el.addEventListener(k.slice(2), v);
+      else if (v !== false && v !== null && v !== undefined) el.setAttribute(k, v === true ? "" : v);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var kid = arguments[i];
+      if (kid === null || kid === undefined || kid === false) continue;
+      el.appendChild(typeof kid === "string" ? document.createTextNode(kid) : kid);
+    }
+    return el;
+  }
+
+  function icon(name, size) {
+    var s = size || 20;
+    var span = document.createElement("span");
+    span.className = "icon";
+    span.innerHTML = '<svg viewBox="0 0 24 24" width="' + s + '" height="' + s + '" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + "</svg>";
+    return span;
+  }
+
+  function ext(href, text) {
+    return h("a", { class: "link", href: href, target: "_blank", rel: "noopener noreferrer", text: text });
+  }
+
+  function go(path) { location.hash = "#/" + path; }
+
+  function safeStore(key, value) { try { localStorage.setItem(key, value); } catch (e) {} }
+  function safeRead(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+
+  /* ---------- routing ---------- */
+  function parseHash() {
+    var parts = (location.hash || "").replace(/^#\/?/, "").split("/");
+    var view = parts[0] || "overview";
+    if (!VIEWS.some(function (v) { return v.id === view; })) view = "overview";
+    return { view: view, arg: parts[1] || null };
+  }
+
+  function onRoute(userNav) {
+    var r = parseHash();
+    state.view = r.view;
+    state.project = (r.view === "projects" && PROJECTS[r.arg]) ? r.arg : null;
+    render(userNav);
+  }
+
+  /* ---------- chrome (nav, lens, tools) ---------- */
+  function buildLens() {
+    var wrap = h("div", { class: "lens", role: "group", "aria-label": "Profile view" });
+    ["fullstack", "ml"].forEach(function (m) {
+      wrap.appendChild(h("button", {
+        class: "lens-btn", type: "button", "data-mode": m, text: MODES[m].label,
+        onclick: function () { setMode(m); }
+      }));
+    });
+    return wrap;
+  }
+
+  function buildNav() {
+    var nav = $("nav");
+    var tabbar = $("tabbar");
+    VIEWS.forEach(function (v) {
+      nav.appendChild(h("a", { class: "nav-link", href: "#/" + v.id, "data-view": v.id }, icon(v.icon), v.label));
+      tabbar.appendChild(h("a", { class: "tab-link", href: "#/" + v.id, "data-view": v.id }, icon(v.icon, 22), v.label));
+    });
+  }
+
+  function buildTools() {
+    $("lens-side").appendChild(buildLens());
+    $("lens-top").appendChild(buildLens());
+    var s = $("open-palette-side");
+    s.appendChild(icon("search", 18)); s.appendChild(document.createTextNode("Search")); s.appendChild(h("kbd", { text: SHORTCUT }));
+    s.addEventListener("click", function () { openPalette(); });
+    $("open-palette-top").appendChild(icon("search", 18));
+    $("open-palette-top").addEventListener("click", function () { openPalette(); });
+    var t = $("theme-side");
+    t.appendChild(icon("moon", 18)); t.appendChild(document.createTextNode("Light or dark theme"));
+    t.addEventListener("click", toggleTheme);
+    $("theme-top").appendChild(icon("moon", 18));
+    $("theme-top").addEventListener("click", toggleTheme);
+  }
+
+  function renderChrome() {
+    document.body.setAttribute("data-mode", state.mode);
+    Array.prototype.forEach.call(document.querySelectorAll(".lens-btn"), function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === state.mode));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-view]"), function (a) {
+      if (a.getAttribute("data-view") === state.view) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+
+  function setMode(m) {
+    if (m === state.mode) return;
+    state.mode = m;
+    state.filter = "All";
+    safeStore("mode", m);
+    try {
+      var u = new URL(location.href);
+      u.searchParams.set("mode", m);
+      history.replaceState(null, "", u.toString());
+    } catch (e) {}
+    render(false);
+  }
+
+  function toggleTheme() {
+    var root = document.documentElement;
+    var current = root.getAttribute("data-theme");
+    var dark = current ? current === "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    safeStore("theme", next);
+  }
+
+  /* ---------- views ---------- */
+  function resumeFile() { return RESUMES[state.mode].file; }
+
+  function overviewView() {
+    var m = MODES[state.mode];
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Sowjanya Surada" }));
+    root.appendChild(h("p", { class: "lede", text: "Fresher, B.Tech Computer Science 2026. Based in Hyderabad and open to work." }));
+    root.appendChild(h("p", { class: "pitch", text: m.pitch }));
+    root.appendChild(h("p", { class: "summary", text: m.summary }));
+    root.appendChild(h("div", { class: "actions" },
+      h("a", { class: "btn", href: resumeFile(), download: resumeFile(), text: "Download resume (PDF)" }),
+      h("a", { class: "btn quiet", href: "#/projects", text: "See projects" }),
+      ext("mailto:" + EMAIL + "?subject=Hello%20Sowjanya", "Email"),
+      ext(GITHUB, "GitHub"),
+      ext(LINKEDIN, "LinkedIn")
+    ));
+    root.appendChild(h("h2", { class: "h2", text: "At a glance" }));
+    var ul = h("ul", { class: "glance" });
+    m.glance.forEach(function (g) {
+      ul.appendChild(h("li", null, h("a", { href: "#/" + g.go, text: g.text })));
+    });
+    root.appendChild(ul);
+    return root;
+  }
+
+  function visibleProjects() {
+    var q = state.query.trim().toLowerCase();
+    return MODES[state.mode].projects.filter(function (id) {
+      var p = PROJECTS[id];
+      if (state.filter !== "All" && p.tags.indexOf(state.filter) === -1) return false;
+      if (!q) return true;
+      var hay = (p.title + " " + p.stack + " " + p.tags.join(" ") + " " + p.points.join(" ")).toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+  }
+
+  function selectedProject() {
+    if (state.project) return state.project;
+    if (desktopQuery.matches) return visibleProjects()[0] || null;
+    return null;
+  }
+
+  function projectsView() {
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Projects" }));
+    root.appendChild(h("p", { class: "lede", text: "Pick a project to read what I built, how, and the result." }));
+
+    var md = h("div", { class: "md" });
+    var list = h("div", { class: "md-list" });
+    var detail = h("div", { class: "md-detail" });
+    md.appendChild(list); md.appendChild(detail);
+    root.appendChild(md);
+
+    var tags = ["All"];
+    MODES[state.mode].projects.forEach(function (id) {
+      PROJECTS[id].tags.forEach(function (t) { if (tags.indexOf(t) === -1) tags.push(t); });
+    });
+
+    var search = h("input", {
+      class: "search", type: "search", placeholder: "Filter projects", "aria-label": "Filter projects",
+      value: state.query,
+      oninput: function () { state.query = search.value; fillList(); fillDetail(); }
+    });
+    var chips = h("div", { class: "chips", role: "group", "aria-label": "Project type" });
+    var plist = h("ul", { class: "plist" });
+    list.appendChild(h("div", { class: "tools" }, search, chips));
+    list.appendChild(plist);
+
+    function fillChips() {
+      chips.textContent = "";
+      tags.forEach(function (t) {
+        chips.appendChild(h("button", {
+          class: "chip", type: "button", text: t, "aria-pressed": String(state.filter === t),
+          onclick: function () { state.filter = t; fillChips(); fillList(); fillDetail(); }
+        }));
+      });
+    }
+
+    function fillList() {
+      plist.textContent = "";
+      var sel = selectedProject();
+      var vis = visibleProjects();
+      if (!vis.length) {
+        plist.appendChild(h("li", null, h("p", { class: "empty", text: "No projects match. Clear the filter to see all projects." })));
+        return;
+      }
+      vis.forEach(function (id) {
+        var p = PROJECTS[id];
+        plist.appendChild(h("li", null,
+          h("a", { class: "prow", href: "#/projects/" + id, "aria-current": String(sel === id) },
+            h("span", { class: "prow-title", text: p.title }),
+            h("span", { class: "prow-meta", text: p.tags.join(", ") })
+          )));
+      });
+    }
+
+    function fillDetail() {
+      detail.textContent = "";
+      md.setAttribute("data-detail", String(Boolean(state.project)));
+      var id = selectedProject();
+      if (!id) {
+        detail.appendChild(h("div", { class: "detail" }, h("p", { class: "empty", text: "Nothing to show. Clear the filter to see all projects." })));
+        return;
+      }
+      var p = PROJECTS[id];
+      var order = MODES[state.mode].projects;
+      var i = order.indexOf(id);
+      var box = h("article", { class: "detail" });
+      box.appendChild(h("a", { class: "back", href: "#/projects" }, icon("chevron", 18), "All projects"));
+      box.appendChild(h("h2", { class: "detail-title", text: p.title }));
+      box.appendChild(h("p", { class: "meta", text: p.meta }));
+      var tg = h("ul", { class: "tags", "aria-label": "Tags" });
+      p.tags.forEach(function (t) { tg.appendChild(h("li", { class: "tag", text: t })); });
+      box.appendChild(tg);
+      var ul = h("ul", { class: "points" });
+      p.points.forEach(function (t) { ul.appendChild(h("li", { text: t })); });
+      box.appendChild(ul);
+      box.appendChild(h("p", { class: "stack" }, h("b", { text: "Built with: " }), p.stack));
+      if (p.links.length) {
+        var wrap = h("div", { class: "detail-links" });
+        p.links.forEach(function (l) { wrap.appendChild(ext(l[1], l[0])); });
+        box.appendChild(wrap);
+      }
+      var prev = order[i - 1], next = order[i + 1];
+      box.appendChild(h("div", { class: "pager" },
+        prev ? h("a", { href: "#/projects/" + prev, text: "Previous: " + PROJECTS[prev].title }) : h("span"),
+        next ? h("a", { href: "#/projects/" + next, text: "Next: " + PROJECTS[next].title }) : h("span")
+      ));
+      detail.appendChild(box);
+    }
+
+    fillChips(); fillList(); fillDetail();
+    return root;
+  }
+
+  function skillProjects(name) {
+    return Object.keys(PROJECTS).filter(function (id) { return PROJECTS[id].skills.indexOf(name) !== -1; });
+  }
+
+  function skillsView() {
+    var m = MODES[state.mode];
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Skills" }));
+    root.appendChild(h("p", { class: "lede", text: "Select a skill to see where I used it." }));
+
+    var panel = h("section", { class: "skillpanel", "aria-live": "polite" });
+    var buttons = [];
+
+    function fillPanel() {
+      panel.textContent = "";
+      Array.prototype.forEach.call(buttons, function (b) { b.setAttribute("aria-pressed", String(b.textContent === state.skill)); });
+      if (!state.skill) {
+        panel.appendChild(h("p", { text: "No skill selected." }));
+        return;
+      }
+      panel.appendChild(h("h2", { text: state.skill }));
+      var ids = skillProjects(state.skill);
+      var training = m.skills.some(function (g) { return g.training && g.items.indexOf(state.skill) !== -1; });
+      if (ids.length) {
+        panel.appendChild(h("p", { text: "Used in:" }));
+        var ul = h("ul", null);
+        ids.forEach(function (id) { ul.appendChild(h("li", null, h("a", { class: "link", href: "#/projects/" + id, text: PROJECTS[id].title }))); });
+        panel.appendChild(ul);
+      } else if (training) {
+        panel.appendChild(h("p", { text: "I am learning this in my Naresh IT Java Full Stack training. It is not in a project on this page yet." }));
+      } else {
+        panel.appendChild(h("p", { text: "Listed on my resume." }));
+      }
+    }
+
+    var groups = h("div", { class: "skillgroups" });
+    m.skills.forEach(function (g) {
+      var chips = h("div", { class: "chips" });
+      g.items.forEach(function (s) {
+        var b = h("button", {
+          class: "chip", type: "button", text: s, "aria-pressed": "false",
+          onclick: function () { state.skill = (state.skill === s) ? null : s; fillPanel(); }
+        });
+        buttons.push(b);
+        chips.appendChild(b);
+      });
+      groups.appendChild(h("div", { class: "skillgroup" }, h("h2", { text: g.name }), chips));
+    });
+    root.appendChild(groups);
+    root.appendChild(panel);
+    fillPanel();
+    return root;
+  }
+
+  function experienceView() {
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Experience" }));
+    root.appendChild(h("p", { class: "lede", text: "Three internships across AI, computer vision and Python." }));
+    var wrap = h("div", { class: "xps" });
+    EXPERIENCE.forEach(function (e, i) {
+      wrap.appendChild(h("details", { class: "xp", open: i === 0 },
+        h("summary", null,
+          h("span", { class: "xp-role", text: e.role + ", " + e.org }),
+          h("span", { class: "xp-meta", text: e.when })),
+        h("p", { class: "xp-body", text: e.text })
+      ));
+    });
+    root.appendChild(wrap);
+    return root;
+  }
+
+  function educationView() {
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Education" }));
+    root.appendChild(h("div", { class: "block" },
+      h("h2", { class: "item-title", text: "B.Tech, Computer Science Engineering" }),
+      h("p", { class: "meta", text: "Miracle Educational Society Group of Institutions, JNTU-GV. 2022 to 2026. CGPA 8.0." })
+    ));
+    root.appendChild(h("h2", { class: "h2", text: "Certifications and activities" }));
+    var ul = h("ul", { class: "plain" });
+    EXTRAS.forEach(function (t) { ul.appendChild(h("li", { text: t })); });
+    root.appendChild(ul);
+    root.appendChild(h("h2", { class: "h2", text: "Languages" }));
+    root.appendChild(h("p", { class: "summary", text: "Telugu, Hindi and English." }));
+    return root;
+  }
+
+  function resumeView() {
+    var file = resumeFile();
+    var other = state.mode === "fullstack" ? "ml" : "fullstack";
+    var root = h("div", null);
+    root.appendChild(h("h1", { class: "h1", text: "Resume" }));
+    root.appendChild(h("p", { class: "lede", text: "Showing the " + MODES[state.mode].label + " version." }));
+    root.appendChild(h("div", { class: "actions" },
+      h("a", { class: "btn", href: file, download: file, text: "Download resume (PDF)" }),
+      h("a", { class: "btn quiet", href: file, target: "_blank", rel: "noopener", text: "Open in new tab" }),
+      h("button", { class: "btn quiet", type: "button", text: "Show the " + MODES[other].label + " version", onclick: function () { setMode(other); } })
+    ));
+    root.appendChild(h("div", { class: "preview" },
+      h("iframe", { src: file + "#view=FitH", title: "Resume preview, " + MODES[state.mode].label + " version" })
+    ));
+    return root;
+  }
+
+  var RENDER = {
+    overview: overviewView, projects: projectsView, skills: skillsView,
+    experience: experienceView, education: educationView, resume: resumeView
+  };
+
+  function render(focusHeading) {
+    renderChrome();
+    var main = $("main");
+    main.textContent = "";
+    main.appendChild(RENDER[state.view]());
+    var label = VIEWS.filter(function (v) { return v.id === state.view; })[0].label;
+    document.title = "Sowjanya Surada | " + label;
+    main.classList.remove("enter");
+    void main.offsetWidth;
+    main.classList.add("enter");
+    if (focusHeading) {
+      var title = main.querySelector("h1");
+      if (title) { title.setAttribute("tabindex", "-1"); title.focus({ preventScroll: true }); }
+      window.scrollTo(0, 0);
+    }
+  }
+
+  /* ---------- command palette ---------- */
+  var pal = { items: [], shown: [], index: 0, opener: null };
+
+  function downloadResume() {
+    var a = document.createElement("a");
+    a.href = resumeFile(); a.download = resumeFile();
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  function buildItems() {
+    var items = [];
+    VIEWS.forEach(function (v) { items.push({ label: "Go to " + v.label, hint: "Section", run: function () { go(v.id); } }); });
+    MODES[state.mode].projects.forEach(function (id) {
+      items.push({ label: "Open project: " + PROJECTS[id].title, hint: "Project", run: function () { go("projects/" + id); } });
+    });
+    MODES[state.mode].skills.forEach(function (g) {
+      g.items.forEach(function (s) {
+        items.push({ label: "Skill: " + s, hint: "Skill", run: function () { state.skill = s; if (parseHash().view === "skills") render(false); else go("skills"); } });
+      });
+    });
+    ["fullstack", "ml"].forEach(function (m) {
+      if (m !== state.mode) items.push({ label: "Switch to the " + MODES[m].label + " view", hint: "Profile", run: function () { setMode(m); } });
+    });
+    items.push(
+      { label: "Download resume (PDF)", hint: "Action", run: downloadResume },
+      { label: "Switch light and dark theme", hint: "Action", run: toggleTheme },
+      { label: "Open GitHub", hint: "Link", run: function () { window.open(GITHUB, "_blank", "noopener"); } },
+      { label: "Open LinkedIn", hint: "Link", run: function () { window.open(LINKEDIN, "_blank", "noopener"); } },
+      { label: "Send an email", hint: "Link", run: function () { location.href = "mailto:" + EMAIL; } }
+    );
+    return items;
+  }
+
+  function paintPalette() {
+    var list = $("pal-list");
+    list.textContent = "";
+    if (!pal.shown.length) {
+      list.appendChild(h("li", { class: "pal-empty", text: "No results. Try a project name, a skill or \"resume\"." }));
+      $("pal-input").removeAttribute("aria-activedescendant");
+      return;
+    }
+    pal.shown.forEach(function (it, i) {
+      var li = h("li", {
+        class: "pal-item", role: "option", id: "pal-opt-" + i, "aria-selected": String(i === pal.index),
+        onclick: function () { pal.index = i; runPalette(); },
+        onmousemove: function () { if (pal.index !== i) { pal.index = i; markSelected(); } }
+      }, h("span", { text: it.label }), h("span", { class: "pal-hint", text: it.hint }));
+      list.appendChild(li);
+    });
+    $("pal-input").setAttribute("aria-activedescendant", "pal-opt-" + pal.index);
+  }
+
+  function markSelected() {
+    Array.prototype.forEach.call($("pal-list").children, function (li, i) {
+      li.setAttribute("aria-selected", String(i === pal.index));
+    });
+    $("pal-input").setAttribute("aria-activedescendant", "pal-opt-" + pal.index);
+    var cur = $("pal-opt-" + pal.index);
+    if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: "nearest" });
+  }
+
+  function filterPalette() {
+    var q = $("pal-input").value.trim().toLowerCase();
+    pal.shown = q ? pal.items.filter(function (it) { return it.label.toLowerCase().indexOf(q) !== -1; }) : pal.items.slice(0, 9);
+    pal.index = 0;
+    paintPalette();
+  }
+
+  function openPalette() {
+    pal.opener = document.activeElement;
+    pal.items = buildItems();
+    $("pal").hidden = false;
+    $("pal-input").value = "";
+    filterPalette();
+    $("pal-input").focus();
+  }
+
+  function closePalette() {
+    $("pal").hidden = true;
+    if (pal.opener && pal.opener.focus) pal.opener.focus();
+  }
+
+  function runPalette() {
+    var it = pal.shown[pal.index];
+    if (!it) return;
+    closePalette();
+    it.run();
+  }
+
+  function bindPalette() {
+    $("pal-input").addEventListener("input", filterPalette);
+    $("pal-input").addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); if (pal.shown.length) { pal.index = (pal.index + 1) % pal.shown.length; markSelected(); } }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (pal.shown.length) { pal.index = (pal.index - 1 + pal.shown.length) % pal.shown.length; markSelected(); } }
+      else if (e.key === "Enter") { e.preventDefault(); runPalette(); }
+      else if (e.key === "Escape") { e.preventDefault(); closePalette(); }
+      else if (e.key === "Tab") { e.preventDefault(); }
+    });
+    $("pal").addEventListener("mousedown", function (e) { if (e.target === $("pal")) closePalette(); });
+    document.addEventListener("keydown", function (e) {
+      var tag = (e.target && e.target.tagName) || "";
+      var typing = tag === "INPUT" || tag === "TEXTAREA" || (e.target && e.target.isContentEditable);
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); if ($("pal").hidden) openPalette(); else closePalette(); }
+      else if (e.key === "/" && !typing && $("pal").hidden) { e.preventDefault(); openPalette(); }
+    });
+  }
+
+  /* ---------- init ---------- */
+  function init() {
+    var theme = safeRead("theme");
+    if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+
+    var fromUrl = null;
+    try { fromUrl = new URL(location.href).searchParams.get("mode"); } catch (e) {}
+    var saved = safeRead("mode");
+    var pick = [fromUrl, saved].filter(function (m) { return m === "ml" || m === "fullstack"; })[0];
+    state.mode = pick || "fullstack";
+
+    buildNav();
+    buildTools();
+    bindPalette();
+    window.addEventListener("hashchange", function () { onRoute(true); });
+    if (desktopQuery.addEventListener) desktopQuery.addEventListener("change", function () { render(false); });
+    onRoute(false);
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
