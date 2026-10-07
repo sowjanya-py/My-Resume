@@ -19,7 +19,7 @@ B.Tech Computer Science graduate (2026), based in Hyderabad. I'm training in **J
 
 ## Skills
 
-- **Languages:** Java, Python
+- **Languages:** Java, Python, C, C++
 - **In training (Naresh IT, 2026):** Spring Boot, Hibernate, REST APIs, MySQL, React
 - **Machine learning:** TensorFlow, Keras, OpenCV, YOLO, MediaPipe, PyTorch, Scikit-learn
 
